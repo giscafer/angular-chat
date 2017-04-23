@@ -9,13 +9,16 @@ let http = require('http').Server(chat_app);
 let io = require('socket.io')(http);
 let clientListNames = [];
 
-chat_app.use(express.static(__dirname, '/'));
-chat_app.use(express.static(__dirname, '/server/'));
-chat_app.use(express.static(__dirname + "/..", '/client/'));
+chat_app.use(express.static(__dirname+'/'));
+chat_app.use(express.static(__dirname+'/server/'));
+chat_app.use(express.static(__dirname+'/dist/'));
+chat_app.use(express.static(__dirname + "/.."+'/client/'));
+chat_app.use(express.static(__dirname + "/.."+'/dist/'));
 chat_app.use(express.static(__dirname + '/node_modules'));
 
+
 chat_app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/../dist/index.html');
 });
 
 chat_app.get('/chat', function(req, res){
@@ -45,6 +48,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(8080, function(){
+  console.log('listening on *:8080');
 });

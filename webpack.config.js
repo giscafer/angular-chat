@@ -144,11 +144,11 @@ module.exports = function makeWebpackConfig() {
 
   if (!isTest || !isTestWatch) {
     // tslint support
-    config.module.rules.push({
+    /*config.module.rules.push({
       test: /\.ts$/,
       enforce: 'pre',
       loader: 'tslint-loader'
-    });
+    });*/
   }
 
   /**

@@ -10,13 +10,16 @@ import { ApiService } from './shared';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import {NickNameModule} from "./nickName-component/nickName.module";
+import {ChatModule} from "./chat-component/chat.module";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing
+    routing,
+    NickNameModule, ChatModule
   ],
   declarations: [
     AppComponent,
