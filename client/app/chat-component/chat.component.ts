@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 declare var socket: any;
+declare var $: any;
 
 /// <reference path="../../typings/globals/jquery/index.d.ts/>
 
@@ -24,8 +25,8 @@ export class ChatComponent {
 
     constructor() {
         let reference = this;
-        // let temp;
-       /* socket.on("broadcastToAll_chatMessage", function(resObj) {
+        let temp;
+        socket.on("broadcastToAll_chatMessage", function(resObj) {
             reference.msgCount++;
             if (reference.sentMessageUsername !== resObj.name) {
                 resObj.name = resObj.name + ": ";
@@ -46,7 +47,7 @@ export class ChatComponent {
                  $("#messages").append($("<br>"));
                 reference.sentMessageUsername = null;
             }
-        });*/
+        });
 
         socket.on("updateSocketList", function(list){
           reference.clientsNameList = list;
@@ -73,7 +74,7 @@ export class ChatComponent {
             reference.sentMessageUsername = username;
             reference.response = respMsg;
         });
-        // $("#message-boxID").val(" ");
+        $("#message-boxID").val(" ");
     }
 
     sendMessageOnEnter($event, messagebox) {
