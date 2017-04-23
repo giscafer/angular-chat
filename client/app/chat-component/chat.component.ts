@@ -5,7 +5,6 @@ declare var socket: any;
 
 
 @Component({
-  moduleId: module.id,
   selector: "chat-page",
   templateUrl: "./chat.component.html"
 })

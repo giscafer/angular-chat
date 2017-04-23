@@ -12,7 +12,6 @@ declare var io: any;
 
 
 @Component({
-    moduleId: module.id,
     selector: "nick-name",
     templateUrl: "nickName.component.html"
 })
