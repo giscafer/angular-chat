@@ -2,6 +2,10 @@
 （IM App）Chat App built using Angular and Socket.io
 
 
+## Demo
+
+![](./client/public/screenshot/demo.gif)
+
 ## Usage
 
 - npm install
