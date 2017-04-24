@@ -26,13 +26,14 @@ h2 {
   width: 70%;
   background: #5FB471;
   height: 100%;
-  position: relative;
+  position: absolute;
 }
 
 .secondSubChild{
+  right: 0;
   width: 30%;
   height: 100%;
-  position: relative;
+  position: absolute;
 }
 
 #note{
@@ -51,8 +52,8 @@ body { font: 13px Helvetica, Arial; }
 
 .user-alert{
   position: absolute;
-  top: 10;
-  right: 20;
+  top: 10px;
+  right: 20px;
   max-width: 96%;
   overflow-wrap: break-word;
 }
@@ -73,7 +74,7 @@ body { font: 13px Helvetica, Arial; }
 }
 
 #resID{
-  position: absolute; bottom: 10; margin-left: 10;
+  position: absolute; bottom: 10px; margin-left: 10px;
 }
 
 #divID {
@@ -169,7 +170,7 @@ body { font: 13px Helvetica, Arial; }
   padding:8px 9px;
   background:#d3d3d3;
   border-radius:2px;
-//float:right;
+  float:right;
   position: absolute;
   bottom: 0;
   right: 2em;
@@ -192,10 +193,10 @@ body { font: 13px Helvetica, Arial; }
 }
 
 .user-list {
-//float: right;
+  float: right;
   position: absolute !important;
-  top: 180;
-  right: 10;
+  top: 180px;
+  right: 10px;
   border: 1px solid #d6d6d6;
   max-width: 95%;
 
@@ -213,7 +214,7 @@ body { font: 13px Helvetica, Arial; }
   overflow-wrap: break-word;
 }
 .user-list__content {
-//display: table-cell;
+display: table-cell;
   padding-left: 78px;
   padding-right: 60px;
   padding-top: 15px;

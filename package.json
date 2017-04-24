@@ -21,7 +21,7 @@
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
     "start": "npm run server",
-    "start1": "nodemon ./server/index.js",
+    "build-start": "npm run build && nodemon ./server/index.js",
     "start:hmr": "npm run server -- --hot",
     "postinstall": "npm run webdriver-update"
   },
