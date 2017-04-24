@@ -1,4 +1,7 @@
-import { Component } from "@angular/core";
+import {Component} from "@angular/core";
+import {getQuestionMessageTmpl, getAnswerMessageTmpl} from "../template/message";
+let moment = require('moment');
+
 declare var socket: any;
 declare var $: any;
 
@@ -11,81 +14,80 @@ declare var $: any;
 })
 
 export class ChatComponent {
-    reference: any;
-    resFlag: boolean = false;
-    newUser: boolean = false;
-    exitedUser: boolean = false;
-    newUserName: string = null;
-    exitedUserName: string = null;
-    sentMessageUsername: string = null;
-    response: string;
-    clientsNameList: number[];
-    message: string;
-    msgCount: number = 0;
+  reference: any;
+  resFlag: boolean = false;
+  newUser: boolean = false;
+  exitedUser: boolean = false;
+  newUserName: string = null;
+  exitedUserName: string = null;
+  sentMessageUsername: string = null;
+  response: string;
+  clientsNameList: number[];
+  message: string;
+  msgCount: number = 0;
 
-    constructor() {
-        let reference = this;
-        let temp;
-        socket.on("broadcastToAll_chatMessage", function(resObj) {
-            reference.msgCount++;
-            if (reference.sentMessageUsername !== resObj.name) {
-                resObj.name = resObj.name + ": ";
-                temp = $("#messages").length;
-                console.log("ul length : ", temp);
-                console.log(reference.msgCount);
-                $("#messages").append($("<li data-index=" + reference.msgCount + ">"));
-                $("li[data-index=" + reference.msgCount + "]").append($("<div class='left-msg' data-index=" + reference.msgCount + ">"));
-                $("div[data-index=" + reference.msgCount + "]").append($("<span class='name'>").text(resObj.name));
-                $("div[data-index=" + reference.msgCount + "]").append($("<span class='msg'>").text(resObj.msg));
-                $("#messages").append($("<br>"));
+  constructor() {
+    let reference = this;
+    // let temp;
+    socket.on("broadcastToAll_chatMessage", function (resObj) {
+      reference.msgCount++;
+      if (reference.sentMessageUsername !== resObj.name) {
+        let time = new Date();
+        let dateTime = moment(time).format('YYYY-MM-DD hh:mm:ss');
+        let messageTmpl = getAnswerMessageTmpl(resObj.name, dateTime, resObj.msg);
+        $("#message-body").append(messageTmpl);
 
-            }
-            else if (reference.sentMessageUsername === resObj.name) {
-                $("#messages").append($("<li data-index=" + reference.msgCount + ">"));
-                $("li[data-index=" + reference.msgCount + "]").append($("<div class='right-msg' data-index=" + reference.msgCount + ">"));
-                $("div[data-index=" + reference.msgCount + "]").append($("<span class='msg'>").text(resObj.msg));
-                 $("#messages").append($("<br>"));
-                reference.sentMessageUsername = null;
-            }
-        });
+      }
+      else if (reference.sentMessageUsername === resObj.name) {
+        let dateTime = moment().format('YYYY-MM-DD HH:mm:ss');
+        let messageTmpl = getQuestionMessageTmpl(resObj.name, dateTime, resObj.msg);
+        $("#message-body").append(messageTmpl);
+        reference.sentMessageUsername = null;
+      }
+    });
 
-        socket.on("updateSocketList", function(list){
-          reference.clientsNameList = list;
-        });
+    socket.on("updateSocketList", function (list) {
+      reference.clientsNameList = list;
+    });
 
-        socket.on("addUserToSocketList", function(username){
-            reference.exitedUser = false;
-            reference.newUser = true;
-            reference.newUserName = username;
-        });
+    socket.on("addUserToSocketList", function (username) {
+      reference.exitedUser = false;
+      reference.newUser = true;
+      reference.newUserName = username;
+    });
 
-        socket.on("removeUserFromSocketList", function(username){
-            reference.newUser = false;
-            reference.exitedUser = true;
-            reference.exitedUserName = username;
-        });
+    socket.on("removeUserFromSocketList", function (username) {
+      reference.newUser = false;
+      reference.exitedUser = true;
+      reference.exitedUserName = username;
+    });
+  }
+
+
+  sendMessage(data) {
+    this.resFlag = true;
+    let reference = this;
+    socket.emit("chatMessageToSocketServer", data.innerText, function (respMsg, username) {
+      reference.sentMessageUsername = username;
+      reference.response = respMsg;
+    });
+    $("#message-boxID").val(" ");
+  }
+
+  sendMessageOnEnter($event, messagebox) {
+    if ($event.which === 13) { // ENTER_KEY
+      this.sendMessage(messagebox);
     }
+  }
 
+  update() {
+    this.resFlag = false;
+    this.newUser = false;
+    this.exitedUser = false;
+  }
 
-    sendMessage(data) {
-        this.resFlag = true;
-        let reference = this;
-        socket.emit("chatMessageToSocketServer", data.value, function(respMsg, username){
-            reference.sentMessageUsername = username;
-            reference.response = respMsg;
-        });
-        $("#message-boxID").val(" ");
-    }
+  fork() {
+    window.open('https://github.com/giscafer/angular-chat')
+  }
 
-    sendMessageOnEnter($event, messagebox) {
-        if ($event.which === 13) { // ENTER_KEY
-            this.sendMessage(messagebox);
-        }
-    }
-
-    update() {
-        this.resFlag = false;
-        this.newUser = false;
-        this.exitedUser = false;
-    }
 }

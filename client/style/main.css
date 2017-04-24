@@ -3010,8 +3010,8 @@ a:hover {
   margin-right: 0;
 }
 
-.operation .sub-modules-wrap .online-ask {
-  background-image: url(/public/img/online-ask.png);
+.operation .sub-modules-wrap .github {
+  background-image: url(/public/img/github.png);
   background-size: 50px;
   background-position: 8px 10px;
 }
