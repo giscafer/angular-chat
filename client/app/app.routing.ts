@@ -1,13 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './about/about.component';
-import { nickNameRoutes }  from "./nickName-component/index";
-import { chatComponentRoutes }  from "./chat-component/index";
+import { UserEntryRoutes }  from "./user-entry/index";
+import { ChatViewRoutes }  from "./chat-view/index";
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent},
-  ...nickNameRoutes,
-  ...chatComponentRoutes
+  ...UserEntryRoutes,
+  ...ChatViewRoutes
 ];
 
 export const routing = RouterModule.forRoot(routes);

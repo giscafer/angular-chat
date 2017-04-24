@@ -10,8 +10,8 @@ import {ApiService} from './shared';
 import {routing} from './app.routing';
 
 import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
-import {NickNameModule} from "./nickName-component/nickName.module";
-import {ChatModule} from "./chat-component/chat.module";
+import {UserEntryModule} from "./user-entry/user-entry.module";
+import {ChatViewModule} from "./chat-view/chat-view.module";
 import {MsgItemComponent} from "./msg-item/msg-item.component";
 
 @NgModule({
@@ -20,7 +20,7 @@ import {MsgItemComponent} from "./msg-item/msg-item.component";
     HttpModule,
     FormsModule,
     routing,
-    NickNameModule, ChatModule
+    UserEntryModule, ChatViewModule
   ],
   declarations: [
     AppComponent,

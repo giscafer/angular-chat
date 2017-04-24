@@ -1,12 +1,12 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
-import {NickNameComponent} from "./nickName.component";
+import {UserEntryComponent} from "./user-entry.component";
 
 @NgModule({
     imports:      [ CommonModule, RouterModule],
-    declarations: [ NickNameComponent ],
-    exports: 	  [ NickNameComponent ]
+    declarations: [ UserEntryComponent ],
+    exports: 	  [ UserEntryComponent ]
 })
 
-export class NickNameModule {}
+export class UserEntryModule {}

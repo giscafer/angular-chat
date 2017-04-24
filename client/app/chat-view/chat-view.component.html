@@ -1,7 +1,7 @@
 <div class="home" avalonctrl="home">
   <section class="grid-header">
     <div class="main-title">A &nbsp;Chat</div>
-    <div class="main-subtitle">angular-chat，Chat App built using Angular and Socket.io！</div>
+    <div class="main-subtitle">angular-chat，Chat App built using Angular and Socket.io！ 请打开多个网页输入不同用户名测试</div>
   </section>
   <section class="grid-sidebar">
     <div class="sidebar-title">A&nbsp;Chat</div>
@@ -302,10 +302,11 @@
               </div>
             </div>
           </div>
-          <div id="message-boxID" #messagebox  class="msg-now" contenteditable="true" (keyup)="sendMessageOnEnter($event, messagebox)" (keydown)="update()"></div>
+          <div id="message-boxID" #messagebox class="msg-now" contenteditable="true"
+               (keyup)="sendMessageOnEnter($event, messagebox)" (keydown)="update()"></div>
           <p class="submit-wrap">
             <span class="remain-input-hint" style="display: inline;">您还可以输入<span class="num">150</span>字</span>
-            <input type="button" value="发&nbsp;送" class="btn btn-submit btn-disabled" (click)="sendMessage(messagebox)" >
+            <input type="button" value="发&nbsp;送" class="btn btn-submit btn-disabled" (click)="sendMessage(messagebox)">
           </p>
           <div class="suggest-list-wrap" style="display: block;">
             <!--ms-if-->
@@ -356,28 +357,27 @@
           </div>
           <!--repeat198473040440019917340425092058132-->
           <div class="module-wrap module-wrap-last">
-            <div class="module-name">自助服务</div>
+            <div class="module-name">当前连接用户 | Connected Users</div>
             <div class="sub-modules-wrap">
-              <div class="sub-modules solution">
-                <!--ms-if-->
-                <!--ms-if-->
-                <!--ms-if-->
-                <a class="sub-module-title" target="_blank" href="http://e.baidu.com/solutions-client" title="解决方案"
-                   data-log="{'target': 'click-send-operation-solution'}">
-                  解决方案
-                </a>
+              <div class="user-list">
+                <ul class="user-list-ul">
+                  <li *ngFor="let name of clientsNameList" class="user-list__item">
+                    <div *ngIf="name">
+                      <div>
+                        <input class="check-box" type="checkbox" [checked]="true" disabled>
+                      </div>
+                      <div class="user-list__content">
+                        <div class="user-list__name">
+                          <div class="text text_size_m">{{name}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
-              <!--repeat089913790514666753266934944423625-->
-              <div class="sub-modules success-case sub-modules-last">
-                <!--ms-if-->
-                <!--ms-if-->
-                <!--ms-if-->
-                <a class="sub-module-title" target="_blank" href="http://e.baidu.com/cases" title="成功案例"
-                   data-log="{'target': 'click-send-operation-success-case'}">
-                  成功案例
-                </a>
+              <div id="resID" *ngIf="resFlag">
+                this is the server response : {{response}}
               </div>
-              <!--repeat089913790514666753266934944423625:end-->
             </div>
           </div>
           <!--repeat198473040440019917340425092058132:end-->

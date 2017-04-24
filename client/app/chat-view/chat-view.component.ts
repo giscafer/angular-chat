@@ -10,10 +10,9 @@ declare var $: any;
 
 @Component({
   selector: "chat-page",
-  templateUrl: "./chat.component.html"
+  templateUrl: "chat-view.component.html"
 })
-
-export class ChatComponent {
+export class ChatViewComponent {
   reference: any;
   resFlag: boolean = false;
   newUser: boolean = false;
@@ -28,7 +27,6 @@ export class ChatComponent {
 
   constructor() {
     let reference = this;
-    // let temp;
     socket.on("broadcastToAll_chatMessage", function (resObj) {
       reference.msgCount++;
       if (reference.sentMessageUsername !== resObj.name) {

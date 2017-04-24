@@ -12,11 +12,11 @@ declare var io: any;
 
 
 @Component({
-    selector: "nick-name",
-    templateUrl: "nickName.component.html"
+    selector: "user-entry",
+    templateUrl: "user-entry.component.html"
 })
 
-export class NickNameComponent {
+export class UserEntryComponent {
     nickname: string = null;
     protected router;
 
