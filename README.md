@@ -1,6 +1,7 @@
 # angular-chat
 （IM App）Chat App built using Angular and Socket.io
 
+模仿百度E秘
 
 ## Demo
 
