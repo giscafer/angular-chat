@@ -69,7 +69,7 @@ export class ChatViewComponent {
       reference.sentMessageUsername = username;
       reference.response = respMsg;
     });
-    $("#message-boxID").val(" ");
+    $("#message-boxID").html('');
   }
 
   sendMessageOnEnter($event, messagebox) {

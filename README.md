@@ -4,13 +4,15 @@
 
 ## Demo
 
+在线演示：[Online Demo](http://project.xinong.wang:8080)
+
 ![](https://raw.githubusercontent.com/giscafer/angular-chat/master/client/public/screenshot/demo.gif)
 
 ## Usage
 
 - npm install
 
-- npm run start-build
+- npm run build-start
 
 
 ## Relate
