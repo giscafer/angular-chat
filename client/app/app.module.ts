@@ -12,7 +12,6 @@ import {routing} from './app.routing';
 import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
 import {UserEntryModule} from "./user-entry/user-entry.module";
 import {ChatViewModule} from "./chat-view/chat-view.module";
-import {MsgItemComponent} from "./msg-item/msg-item.component";
 
 @NgModule({
   imports: [
@@ -24,7 +23,6 @@ import {MsgItemComponent} from "./msg-item/msg-item.component";
   ],
   declarations: [
     AppComponent,
-    MsgItemComponent,
     HomeComponent,
     AboutComponent
   ],
